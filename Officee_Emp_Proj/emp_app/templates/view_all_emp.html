@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
+    <title>Management App</title>
+</head>
+<body>
+<div class="top-nav">
+    <div class="container">
+        <div class="row justify-content-between">
+                <div class="col-auto">
+                    <p class="text-white"><i class="bx bxs-envelope text-white"></i>muhammadumer5490@gmail.com</p>
+                    <p class="text-white"><i class="bx bxs-phone-call"></i>(+92) 3215490285</p>
+                </div>
+                <div class="col-auto social-icons">
+                    <a href="#"><i class='bx bxl-facebook'></i></a>
+                    <a href="#"><i class='bx bxl-twitter'></i></a>
+                    <a href="#"><i class='bx bxl-instagram'></i></a>
+                    <a href="#"><i class='bx bxl-pinterest'></i></a>
+                </div>
+        </div>
+    </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+  <div class="container">
+      <a class="navbar-brand" href="#" style="font-size:20px;">Office Employee Management App<span class="dot">.</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                  <a class="nav-link" href="{% url 'about' %}">Home</a>
+              </li>
+              {% comment %} <li class="nav-item">
+                  <a class="nav-link" href="#about">About</a>
+              </li> {% endcomment %}
+              <li class="nav-item">
+                  <a class="nav-link" href="all_emp">Employee</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="add_emp">Add Employee</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="remove_emp">Delete Employee</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="filter_emp">Search</a>
+              </li>
+
+          </ul>
+          {% comment %} <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-brand ms-lg-3">Contact</a> {% endcomment %}
+      </div>
+  </div>
+</nav>
+
+  <div class="container">
+          <h1>All Employee Details!</h1>
+      <hr>
+     <table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Salary</th>
+      <th scope="col">Bonus</th>
+      <th scope="col">Phone Number</th>
+      <th scope="col">Role</th>
+      <th scope="col">Department</th>
+      <th scope="col">Location</th>
+      <th scope="col">Hiredate</th>
+    </tr>
+  </thead>
+         {% for emp in emps %}
+  <tbody>
+    <tr>
+      <th scope="row">{{emp.id}}</th>
+      <td>{{emp.first_name}}</td>
+      <td>{{emp.last_name}}</td>
+      <td>{{emp.salary}}</td>
+      <td>{{emp.bonus}}</td>
+      <td>{{emp.phone}}</td>
+      <td>{{emp.role.name}}</td>
+      <td>{{emp.dept.name}}</td>
+      <td>{{emp.dept.location}}</td>
+      <td>{{emp.hire_date}}</td>
+    </tr>
+  </tbody>
+         {% endfor %}
+</table>
+
+  </div>
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</html>
